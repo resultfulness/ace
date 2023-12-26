@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource/outfit':
+    specifier: ^5.0.8
+    version: 5.0.8
   postgres:
     specifier: ^3.4.3
     version: 3.4.3
@@ -251,6 +254,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource/outfit@5.0.8:
+    resolution: {integrity: sha512-1VgGeHc7rdxdtr/r4t5rL8tmMKKgf2bOpucYqFuC8rjNKCAS3mlz4MzEj9rrgRAAdn5yqlKtZOTuu+5P7WQvjw==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
