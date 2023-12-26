@@ -1,0 +1,25 @@
+.primary-button,
+.secondary-button {
+    border-radius: 100vw;
+    padding: .75em 1.5em;
+    cursor: pointer;
+    transition: ease 200ms;
+    text-decoration: none;
+    display: grid;
+    place-items: center;
+    color: inherit;
+}
+
+.primary-button {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.primary-button:hover {
+    transform: translate(0, -6px);
+}
+
+.primary-button:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 6px;
+}
