@@ -1,19 +1,19 @@
 :root {
     color-scheme: light;
 
-    --primary: hsl(266, 52, 38);
-    --fg: hsl(261, 43, 9);
-    --bg: hsl(249, 14, 90);
-    --neutral: hsl(249, 9, 85);
+    --primary: hsl(266, 52%, 38%);
+    --fg: hsl(261, 43%, 9%);
+    --bg: hsl(249, 14%, 90%);
+    --neutral: hsl(249, 9%, 85%);
 }
 
 :root[data-theme="dark"] {
     color-scheme: dark;
 
-    --primary: hsl(266, 52, 38);
-    --fg: hsl(260, 43, 99);
-    --bg: hsl(249, 14, 10);
-    --neutral: hsl(249, 9, 15);
+    --primary: hsl(266, 52%, 38%);
+    --fg: hsl(260, 43%, 99%);
+    --bg: hsl(249, 14%, 10%);
+    --neutral: hsl(249, 9%, 15%);
 }
 
 *,
@@ -29,6 +29,7 @@ body {
   color: var(--fg);
   background-color: var(--bg);
   font-family: 'Outfit', sans-serif;
+  margin: 0;
 }
 
 img,
