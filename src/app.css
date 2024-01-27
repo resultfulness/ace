@@ -2,6 +2,8 @@
     color-scheme: light;
 
     --primary: hsl(266, 52%, 38%);
+    /* --primary: #9448bc; */
+    /* --secondary: #480355; */
     --fg: hsl(261, 43%, 9%);
     --bg: hsl(249, 14%, 90%);
     --neutral: hsl(249, 9%, 85%);
@@ -15,6 +17,7 @@
     --bg: hsl(249, 14%, 10%);
     --neutral: hsl(249, 9%, 15%);
 }
+
 
 *,
 *::before,

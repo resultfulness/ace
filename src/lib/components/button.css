@@ -3,7 +3,7 @@
     border-radius: 100vw;
     padding: .75em 1.5em;
     cursor: pointer;
-    transition: ease 200ms;
+    transition: transform ease 200ms;
     text-decoration: none;
     display: grid;
     place-items: center;

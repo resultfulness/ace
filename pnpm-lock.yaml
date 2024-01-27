@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource/material-symbols-outlined':
+    specifier: ^5.0.19
+    version: 5.0.19
   '@fontsource/outfit':
     specifier: ^5.0.8
     version: 5.0.8
@@ -254,6 +257,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource/material-symbols-outlined@5.0.19:
+    resolution: {integrity: sha512-iFqWzH04PA2eBAH87eLHCOx2UfFa5zz7YaBGQcYRCwjUwZKXEc9AGPWph0ueKBBZi5Xd2NqBqfUUQhSHNAKwsg==}
+    dev: false
 
   /@fontsource/outfit@5.0.8:
     resolution: {integrity: sha512-1VgGeHc7rdxdtr/r4t5rL8tmMKKgf2bOpucYqFuC8rjNKCAS3mlz4MzEj9rrgRAAdn5yqlKtZOTuu+5P7WQvjw==}

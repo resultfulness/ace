@@ -1,5 +1,6 @@
 <script>
     import Search from "$lib/components/search.svelte";
+    import Icon from "$lib/components/icon.svelte";
 </script>
 
 <main>

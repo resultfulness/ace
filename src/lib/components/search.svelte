@@ -1,9 +1,14 @@
 <script lang="ts">
+    import Icon from "./icon.svelte";
+
     let value: string = "";
 </script>
 
 <form method="GET" action="javascript:void(0);">
     <label>
+        <span>
+            <Icon icon="search" size="1.5em" />
+        </span>
         <input bind:value placeholder="Look for a movie or series..." />
         <button class="primary-button" type="submit">Search</button>
     </label>
@@ -12,13 +17,19 @@
 <style>
     label {
         display: grid;
-        grid-template-columns: 1fr auto;
-        padding-left: 1.5em;
+        grid-template-columns: auto 1fr auto;
         box-shadow: inset 0 0 0 2px var(--neutral);
         border-radius: 100vw;
         width: 100%;
         background-color: var(--bg);
         cursor: text;
+    }
+
+    span {
+        display: grid;
+        place-items: center;
+        padding-inline: 1em 0.5em;
+        color: #919196;
     }
 
     input {
