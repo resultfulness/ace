@@ -8,7 +8,7 @@
         border-radius: 2rem;
         padding: 2rem;
 
-        margin: 16rem auto 2rem;
+        margin: 2rem auto 2rem;
         width: min(100%, 1049px);
     }
 

@@ -6,6 +6,7 @@
     /* --secondary: #480355; */
     --fg: hsl(261, 43%, 9%);
     --bg: hsl(249, 14%, 90%);
+    --bg-drop: hsla(249, 14%, 90%, 0.6);
     --neutral: hsl(249, 9%, 85%);
 }
 
@@ -15,6 +16,7 @@
     --primary: hsl(266, 52%, 38%);
     --fg: hsl(260, 43%, 99%);
     --bg: hsl(249, 14%, 10%);
+    --bg-drop: hsla(249, 14%, 10%, 0.8);
     --neutral: hsl(249, 9%, 15%);
 }
 
@@ -37,7 +39,7 @@ body {
 
 img,
 picture {
-  max-width: 100%;
+  width: 100%;
   display: block;
 }
 

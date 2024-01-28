@@ -46,6 +46,7 @@
         gap: 4rem;
         padding: .25rem 4rem;
         border-bottom: 2px solid var(--neutral);
+        z-index: 999;
     }
 
     a.logo {
