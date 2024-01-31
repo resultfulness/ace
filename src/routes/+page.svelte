@@ -1,7 +1,10 @@
 <script>
     import Search from "$lib/components/search.svelte";
-    import Icon from "$lib/components/icon.svelte";
 </script>
+
+<svelte:head>
+    <title>Main page -- Ace of Spades</title>
+</svelte:head>
 
 <main>
     <div>

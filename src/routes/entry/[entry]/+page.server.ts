@@ -5,7 +5,6 @@ import type { PageServerLoad } from './$types';
 import tmdb, { tmdb_err } from '$lib/server/tmdb';
 
 export const load: PageServerLoad = async function({ params }) {
-    return;
     if (!params.entry)
         error(400, 'must provide entry id');
 

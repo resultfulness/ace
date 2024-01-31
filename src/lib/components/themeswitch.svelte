@@ -16,6 +16,15 @@
 </label>
 
 <style>
+  label {
+    border-radius: 100vw;
+  }
+
+  label:focus-within {
+    outline: 2px solid var(--primary);
+    outline-offset: 6px;
+  }
+
   .switch {
     --_switch-width: 5.5rem;
     --_switch-height: 3rem;

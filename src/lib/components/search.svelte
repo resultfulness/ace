@@ -4,12 +4,16 @@
     let value: string = "";
 </script>
 
-<form method="GET" action="javascript:void(0);">
+<form method="get" action="/search">
     <label>
         <span>
             <Icon icon="search" size="1.5em" />
         </span>
-        <input bind:value placeholder="Look for a movie or series..." />
+        <input
+            bind:value
+            placeholder="Look for a movie or series..."
+            name="query"
+        />
         <button class="primary-button" type="submit">Search</button>
     </label>
 </form>
@@ -38,7 +42,9 @@
         border-bottom: 2px solid var(--neutral);
         background-color: inherit;
     }
-    input:focus { outline: 0; }
+    input:focus {
+        outline: 0;
+    }
 
     label:focus-within {
         background-color: var(--neutral);
@@ -48,6 +54,6 @@
 
     button:hover {
         transform: translate(0, 0);
-        filter: brightness(1.4) saturate(.6);
+        filter: brightness(1.4) saturate(0.6);
     }
 </style>

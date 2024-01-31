@@ -25,7 +25,7 @@
 </script>
 
 <header>
-    <a href="/" title="Home" class="logo">
+    <a href="/" title="Main page" class="logo">
         <h1>Ace of spades</h1>
     </a>
     <div style:visibility={$page.url.pathname === "/" ? "hidden" : "visible"}>

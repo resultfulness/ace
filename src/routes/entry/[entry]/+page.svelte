@@ -1,185 +1,105 @@
 <script lang="ts">
+    import { get_alt_for_level, get_card_for_level } from "$lib/ace_cards";
     import get_image_full_src from "$lib/image";
     import type { Entry, Movie, TV } from "$lib/types";
     import type { PageData } from "./$types";
 
-    import card_9 from "$lib/images/cards/9-of-spades.png";
-    import card_10 from "$lib/images/cards/10-of-spades.png";
-    import card_jack from "$lib/images/cards/jack-of-spades.png";
-    import card_queen from "$lib/images/cards/queen-of-spades.png";
-    import card_king from "$lib/images/cards/king-of-spades.png";
-    import card_ace from "$lib/images/cards/ace-of-spades.png";
-    import card_joker from "$lib/images/cards/joker.png";
-
     export let data: PageData;
     const { entry, details } = data;
 
-    let _mock_entry: Entry = {
-        ace_id: 10283682,
-        ace_rating: 3,
-        ace_user_rating: null,
-        ace_user_rating_count: null,
-        ace_none: 49,
-        ace_mild: 193,
-        ace_mdrt: 407,
-        ace_sevr: 233,
-        tconst: "tt2861424",
-        title: "Rick and Morty",
-        rating: 9.1,
-        rating_count: 564697,
-    };
-    let _mock_details: TV | Movie = {
-        adult: false,
-        backdrop_path: "/rBF8wVQN8hTWHspVZBlI3h7HZJ.jpg",
-        id: 60625,
-        name: "Rick and Morty",
-        original_language: "en",
-        original_name: "Rick and Morty",
-        overview:
-            "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
-        poster_path: "/gdIrmf2DdY5mgN6ycVP0XlzKzbE.jpg",
-        media_type: "tv",
-        genre_ids: [16, 35, 10765, 10759],
-        popularity: 878.185,
-        first_air_date: "2013-12-02",
-        vote_average: 8.7,
-        vote_count: 9092,
-        origin_country: ["US"],
-        genres: [
-            "Action & Adventure",
-            "Animation",
-            "Comedy",
-            "Sci-Fi & Fantasy",
-        ],
-    };
-
     let year: string;
-    $: if (_mock_details.media_type === "movie") {
-        year = _mock_details.release_date.slice(0, 4);
-    } else if (_mock_details.media_type === "tv") {
-        year = _mock_details.first_air_date.slice(0, 4);
-    }
-
-    function get_card_for_level(level: number | null) {
-        switch (level) {
-            case 0:
-                return card_ace;
-            case 1:
-                return card_king;
-            case 3:
-                return card_queen;
-            case 4:
-                return card_jack;
-            case 5:
-                return card_10;
-            case 6:
-                return card_9;
-            default:
-                return card_joker;
-        }
-    }
-
-    function get_alt_for_level(level: number | null) {
-        switch (level) {
-            case 0:
-                return "ace of spades";
-            case 1:
-                return "king of spades";
-            case 3:
-                return "queen of spades";
-            case 4:
-                return "jack of spades";
-            case 5:
-                return "10 of spades";
-            case 6:
-                return "9 of spades";
-            default:
-                return "joker";
-        }
+    $: if (details.media_type === "movie") {
+        year = details.release_date.slice(0, 4);
+    } else if (details.media_type === "tv") {
+        year = details.first_air_date.slice(0, 4);
     }
 </script>
 
 <svelte:head>
-    <title>{_mock_entry.title} ({year}) -- Ace of Spades</title>
+    <title>{entry.title} ({year}) -- Ace of Spades</title>
 </svelte:head>
 
 <div class="page-container">
     <main>
         <img
-            src={get_image_full_src(_mock_details.poster_path, "poster")}
+            src={get_image_full_src(details.poster_path, "poster")}
             alt="entry poster"
             class="poster"
         />
         <div class="title-container">
             <div>
-                <h2>{_mock_entry.title}</h2>
+                <h2>{entry.title}</h2>
                 <p class="title-subtitle">
                     {year} |
-                    {#each _mock_details.genres as g, i}
-                        {g}{i === _mock_details.genres.length - 1 ? "" : " - "}
+                    {#each details.genres as g, i}
+                        {g}{i === details.genres.length - 1 ? "" : " - "}
                     {/each}
                 </p>
             </div>
 
             <div class="cards">
-                <img
-                    src={get_card_for_level(_mock_entry.ace_rating)}
-                    alt={"playing card, " +
-                        get_alt_for_level(_mock_entry.ace_rating)}
-                    class="card"
-                />
-                <img
-                    src={get_card_for_level(_mock_entry.ace_user_rating)}
-                    alt={"playing card, " +
-                        get_alt_for_level(_mock_entry.ace_user_rating)}
-                    class="card"
-                />
+                <figure>
+                    <img
+                        src={get_card_for_level(entry.ace_rating)}
+                        alt={"playing card, " +
+                            get_alt_for_level(entry.ace_rating)}
+                        class="card"
+                    />
+                    <figcaption>our rating</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src={get_card_for_level(entry.ace_user_rating)}
+                        alt={"playing card, " +
+                            get_alt_for_level(entry.ace_user_rating)}
+                        class="card"
+                    />
+                    <figcaption>user rating</figcaption>
+                </figure>
             </div>
         </div>
 
-        <div class="overview">{_mock_details.overview}</div>
+        <div class="overview"><p>{details.overview}</p></div>
 
         <div class="ratings">
-            <div class="imdb-container">
+            <a
+                class="imdb-container"
+                href={`https://www.imdb.com/title/${entry.tconst}`}
+                title="View entry at IMDb"
+            >
                 <span><span id="imdb-tag">IMDb</span> rating</span>
-                <span class="ratings-rating">{_mock_entry.rating}/10</span>
-                <span class="ratings-count"
-                    >{_mock_entry.rating_count} votes</span
-                >
-            </div>
-            <div class="tmdb-container">
+                <span class="ratings-rating">
+                    {entry.rating}<span class="out-of-10"></span>
+                </span>
+                <span class="ratings-count">
+                    {entry.rating_count} votes
+                </span>
+            </a>
+            <a
+                class="tmdb-container"
+                href={`
+https://www.themoviedb.org/${details.media_type}/${details.id}
+`}
+                title="View entry at TMDB"
+            >
                 <span><span id="tmdb-tag">TMDB</span> rating</span>
-                <span class="ratings-rating"
-                    >{_mock_details.vote_average}/10</span
-                >
-                <span class="ratings-count"
-                    >{_mock_details.vote_count} votes</span
-                >
-            </div>
+                <span class="ratings-rating">
+                    {details.vote_average}<span class="out-of-10"></span>
+                </span>
+                <span class="ratings-count">
+                    {details.vote_count} votes
+                </span>
+            </a>
         </div>
     </main>
     <img
-        src={get_image_full_src(_mock_details.backdrop_path, "backdrop")}
+        src={get_image_full_src(details.backdrop_path, "backdrop")}
         alt="entry backdrop"
         class="backdrop"
     />
 </div>
 
 <style>
-    .card {
-        background-color: var(--fg);
-        border-radius: 2rem;
-        padding: 1rem;
-    }
-
-    .cards {
-        --_card-width: 200px;
-        display: grid;
-        grid-template-columns: repeat(2, var(--_card-width));
-        justify-content: center;
-        gap: 4rem;
-    }
-
     .page-container {
         position: relative;
         background-color: var(--bg-drop);
@@ -189,7 +109,7 @@
     main {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 1fr 10.375rem;
+        grid-template-rows: 1fr 11rem;
         gap: 2rem;
         padding: 4rem 2rem;
         width: min(1440px, 100% - 2rem);
@@ -205,7 +125,7 @@
 
     .poster {
         border-radius: 2rem;
-        grid-column: span 3;
+        grid-column: span 4;
     }
 
     .title-container {
@@ -213,19 +133,45 @@
         padding: 2rem;
         background-color: var(--bg);
         display: grid;
-        grid-column: span 9;
+        grid-column: span 8;
         align-content: space-between;
     }
 
     h2 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
         font-size: 4rem;
         font-weight: bold;
         margin: 0;
     }
 
     .title-subtitle {
-        margin: 0;
+        margin-top: -0.75em;
         color: var(--fg);
+        filter: brightness(0.6);
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        padding-top: 1rem;
+        padding-inline: 11rem;
+        gap: 4rem;
+    }
+    .card {
+        border-radius: 1rem;
+        box-shadow: 0 3px 5px 0 rgb(0 0 0 / 0.1);
+    }
+    figure {
+        margin: 0;
+    }
+    figcaption {
+        text-align: center;
+        filter: brightness(0.6);
     }
 
     .overview {
@@ -238,15 +184,24 @@
         text-align: justify;
     }
 
+    .overview > p {
+        margin: 0;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+
     .ratings {
         display: flex;
         justify-content: center;
-        gap: 4rem;
+        gap: 2rem;
         background-color: var(--bg);
         grid-column: span 4;
         width: 100%;
         margin-inline: auto;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 2rem;
     }
 
@@ -255,14 +210,36 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-decoration: none;
+        color: inherit;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .imdb-container:hover,
+    .tmdb-container:hover {
+        background-color: var(--bg);
+        filter: brightness(1.2);
+    }
+
+    .imdb-container:focus,
+    .tmdb-container:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 6px;
     }
 
     .ratings-rating {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .ratings-count {
-        filter: brightness(0.8);
+        filter: brightness(0.6);
+    }
+
+    .out-of-10::before {
+        content: "/10";
+        font-size: 0.5em;
+        filter: brightness(0.6);
     }
 
     #imdb-tag {
