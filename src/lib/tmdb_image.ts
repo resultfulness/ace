@@ -1,4 +1,4 @@
-export default function get_image_full_src(
+export function get_image_full_src(
 		src: string,
 		type: 'poster' | 'backdrop' | undefined
 	) {

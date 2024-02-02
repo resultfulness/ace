@@ -1,11 +1,15 @@
 import { sql } from "$lib/server/database";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import type { Entry, Movie, TV } from "$lib/types";
+import type { Movie, TV } from "$lib/types";
 import tmdb, { tmdb_err } from "$lib/server/tmdb";
+import { get_entry_year } from "$lib/entry";
 
 export const load: PageServerLoad = async function({ url }) {
 	const q = url.searchParams.get('query');
+
+	if (!q)
+		error(400, `Missing 'query' parameter`);
 
 	const res = await sql`
 SELECT ace_id, title, tconst, ace_rating, ace_user_rating
@@ -23,6 +27,7 @@ LIMIT 10;
 		ace_user_rating: number;
 		poster_path: string;
 		overview: string;
+		year: string;
 	}[];
 
 	for (const entry of entries) {
@@ -37,6 +42,7 @@ LIMIT 10;
 			: tmdb_res as TV;
 		entry.poster_path = details.poster_path;
 		entry.overview = details.overview;
+		entry.year = get_entry_year(details);
 	}
 
 	return { entries, q };

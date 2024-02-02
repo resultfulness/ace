@@ -1,11 +1,9 @@
 <script lang="ts">
     import { get_alt_for_level, get_card_for_level } from "$lib/ace_cards";
-    import get_image_full_src from "$lib/image";
+    import { get_image_full_src } from "$lib/tmdb_image";
     import type { PageData } from "./$types";
 
     export let data: PageData;
-
-    $: console.log(data.entries);
 </script>
 
 <svelte:head>
@@ -30,7 +28,7 @@
                             class="poster"
                         />
                         <div>
-                            <h3>{entry.title}</h3>
+                            <h3>{entry.title} ({entry.year})</h3>
                         </div>
                         <div class="cards">
                             <img

@@ -1,18 +1,12 @@
 <script lang="ts">
     import { get_alt_for_level, get_card_for_level } from "$lib/ace_cards";
-    import get_image_full_src from "$lib/image";
-    import type { Entry, Movie, TV } from "$lib/types";
+    import { get_entry_year } from "$lib/entry";
+    import { get_image_full_src } from "$lib/tmdb_image";
     import type { PageData } from "./$types";
 
     export let data: PageData;
     const { entry, details } = data;
-
-    let year: string;
-    $: if (details.media_type === "movie") {
-        year = details.release_date.slice(0, 4);
-    } else if (details.media_type === "tv") {
-        year = details.first_air_date.slice(0, 4);
-    }
+    const year = get_entry_year(details);
 </script>
 
 <svelte:head>
