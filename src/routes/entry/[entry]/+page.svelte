@@ -27,7 +27,7 @@
                 <p class="title-subtitle">
                     {year} |
                     {#each details.genres as g, i}
-                        {g}{i === details.genres.length - 1 ? "" : " - "}
+                        {g.toLowerCase()}{i === details.genres.length - 1 ? "" : " - "}
                     {/each}
                 </p>
             </div>

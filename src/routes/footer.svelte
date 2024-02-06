@@ -1,16 +1,15 @@
 <script>
-
     import Icon from "$lib/components/icon.svelte";
-
 </script>
+
 <footer>
-    <h2>Ace of Spades (2024)</h2>
+    <h2>ace of spades &spades;</h2>
     <nav>
-        <a href="/">Home</a>
-        <a href="#about">About</a>
+        <a href="/">home</a>
+        <a href="#about">about</a>
         <a href="https://github.com/resultfulness/ace">
             <Icon icon_name="mark-github" size="20px"/>
-            Source
+            source
         </a>
         <a href="https://https://www.themoviedb.org">TMDB</a>
     </nav>

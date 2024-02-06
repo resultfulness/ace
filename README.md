@@ -2,11 +2,14 @@
 
 ## TODO
 
-- footer
-- main page
-- mobile, layout change breakpoints
-- revise search functionality
-- search feedback
-- search loads data for search result pages
-- search pagination
-- add users, comments
+- [x] footer
+- [ ] main page
+- [ ] hover effects
+- [ ] mobile, layout change breakpoints
+- [ ] loading feedback
+- [ ] error pages
+- [ ] modals for some info
+- [ ] search loads data for search result pages
+- [ ] search pagination
+- [ ] revise search functionality
+- [ ] add users, comments

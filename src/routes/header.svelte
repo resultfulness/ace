@@ -24,15 +24,11 @@
 
 <header>
     <a href="/" title="Main page" class="logo">
-        <h1>Ace of spades</h1>
+        <h1>ace of spades &spades;</h1>
     </a>
     <div style:visibility={$page.url.pathname === "/" ? "hidden" : "visible"}>
         <Search />
     </div>
-    <!-- <Linkbutton href="/auth/login">Login</Linkbutton> -->
-    <!-- <button class="theme-switch" on:click={toggleTheme}> -->
-    <!--     <Icon icon="light_mode" /> -->
-    <!-- </button> -->
     <Themeswitch bind:checked={is_light_theme} />
 </header>
 
@@ -42,7 +38,7 @@
         grid-template-columns: auto 1fr 8rem;
         align-items: center;
         gap: 4rem;
-        padding: .25rem 4rem;
+        padding: 1rem 4rem;
         border-bottom: 2px solid var(--neutral);
         z-index: 999;
     }
@@ -50,5 +46,12 @@
     a.logo {
         color: inherit;
         text-decoration: inherit;
+        border-radius: 100vw;
+        padding-inline: 2rem;
+    }
+
+    a.logo:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 6px;
     }
 </style>

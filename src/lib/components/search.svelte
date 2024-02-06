@@ -2,6 +2,7 @@
     import Icon from "./icon.svelte";
 
     let value: string = "";
+
 </script>
 
 <form method="get" action="/search">
@@ -11,10 +12,10 @@
         </span>
         <input
             bind:value
-            placeholder="Look for a movie or series..."
+            placeholder="look for a movie or series..."
             name="query"
         />
-        <button>Search</button>
+        <button>search</button>
     </label>
 </form>
 

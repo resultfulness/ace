@@ -8,7 +8,7 @@ import { get_entry_year } from "$lib/entry";
 export const load: PageServerLoad = async function({ url }) {
 	const q = url.searchParams.get('query');
 
-	if (!q)
+	if (q?.length === 0 || q?.replaceAll(" ", "").length === 0)
 		error(400, `Missing 'query' parameter`);
 
 	const res = await sql`
