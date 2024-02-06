@@ -28,7 +28,7 @@
 <style>
     main {
         margin-inline: auto;
-        width: min(100% - 4rem, 1049px);
+        width: min(100% - 2rem, 1440px);
     }
 
     div {

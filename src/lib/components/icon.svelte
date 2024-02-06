@@ -1,32 +1,30 @@
 <script lang="ts">
-  export let icon: string;
-  export let size: string = "24px";
-  export let color: string = "inherit";
+    import icons, { type IconName } from "@primer/octicons";
+
+    export let icon_name: IconName;
+    export let size: string = "16px";
+
+    let icon = icons[icon_name];
 </script>
 
-<span
-  class="material-symbols-outlined"
-  style:font-size={size}
-  style:color
->
-  {icon}
-</span>
+{#if icon}
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        class="octicon"
+        width={size}
+    >
+        {@html icon.heights["16"]?.path}
+    </svg>
+{:else}
+    <p>{icon_name}</p>
+{/if}
 
 <style>
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  font-feature-settings: 'liga';
-  -moz-font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale;
-}
+    .octicon {
+        display: inline-block;
+        vertical-align: text-top;
+        fill: currentColor;
+        overflow: visible;
+    }
 </style>

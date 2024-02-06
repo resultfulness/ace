@@ -1,7 +1,6 @@
 <script lang="ts">
     import "@fontsource/outfit";
     import "@fontsource/outfit/700.css";
-    import "@fontsource/material-symbols-outlined";
     import "../app.css";
     import Header from "./header.svelte";
     import Footer from "./footer.svelte";

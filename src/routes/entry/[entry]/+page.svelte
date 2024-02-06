@@ -3,6 +3,7 @@
     import { get_entry_year } from "$lib/entry";
     import { get_image_full_src } from "$lib/tmdb_image";
     import type { PageData } from "./$types";
+    import tmdb_logo from "$lib/images/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
 
     export let data: PageData;
     const { entry, details } = data;
@@ -76,7 +77,10 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
 `}
                 title="View entry at TMDB"
             >
-                <span><span id="tmdb-tag">TMDB</span> rating</span>
+                <span>
+                    <img src={tmdb_logo} alt="logo of The Movie Database" />
+                    rating
+                </span>
                 <span class="ratings-rating">
                     {details.vote_average}<span class="out-of-10"></span>
                 </span>
@@ -188,7 +192,8 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
     }
 
     .ratings {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         gap: 2rem;
         background-color: var(--bg);
@@ -197,6 +202,19 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
         margin-inline: auto;
         padding: 1rem;
         border-radius: 2rem;
+        position: relative;
+    }
+
+    .ratings::before {
+        content: '';
+        width: 4px;
+        top: 1rem;
+        bottom: 1rem;
+        left: calc(50% - 2px);
+        transform: translateX(-50%);
+
+        background-color: var(--neutral);
+        position: absolute;
     }
 
     .imdb-container,
@@ -208,6 +226,13 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
         color: inherit;
         padding: 1rem;
         border-radius: 1rem;
+    }
+
+    .tmdb-container > span:first-of-type {
+        display: grid;
+        grid-template-columns: 43px auto;
+        gap: .5ch;
+        align-items: center;
     }
 
     .imdb-container:hover,
@@ -239,14 +264,6 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
     #imdb-tag {
         background-color: #f5c518;
         color: black;
-        padding: 2px 4px;
-        border-radius: 4px;
-        font-weight: bold;
-    }
-
-    #tmdb-tag {
-        background-color: #032541;
-        color: #01b4e4;
         padding: 2px 4px;
         border-radius: 4px;
         font-weight: bold;

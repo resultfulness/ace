@@ -1,8 +1,6 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import { page } from "$app/stores";
-    import Icon from "$lib/components/icon.svelte";
-    import Linkbutton from "$lib/components/linkbutton.svelte";
     import Search from "$lib/components/search.svelte";
     import Themeswitch from "$lib/components/themeswitch.svelte";
     import { onMount } from "svelte";

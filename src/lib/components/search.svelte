@@ -7,14 +7,14 @@
 <form method="get" action="/search">
     <label>
         <span>
-            <Icon icon="search" size="1.5em" />
+            <Icon icon_name="search" size="1.5em" />
         </span>
         <input
             bind:value
             placeholder="Look for a movie or series..."
             name="query"
         />
-        <button class="primary-button" type="submit">Search</button>
+        <button>Search</button>
     </label>
 </form>
 
@@ -53,7 +53,24 @@
     }
 
     button:hover {
-        transform: translate(0, 0);
         filter: brightness(1.4) saturate(0.6);
+    }
+
+    button {
+        border-radius: 100vw;
+        padding: .75em 1.5em;
+        cursor: pointer;
+        transition: transform ease 200ms;
+        text-decoration: none;
+        display: grid;
+        place-items: center;
+        color: hsl(260, 43%, 99%);
+        background-color: var(--primary);
+        border: 2px solid var(--primary);
+    }
+
+    button:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 6px;
     }
 </style>

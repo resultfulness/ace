@@ -1,15 +1,14 @@
 <script lang="ts">
   import Icon from "./icon.svelte";
-
   export let checked: boolean;
 </script>
 
 <label class="switch">
   <span class:hide={!checked} class="moon">
-    <Icon icon="dark_mode" size="28px" />
+    <Icon icon_name="moon" size="28px" />
   </span>
   <span class:hide={checked} class="sun">
-    <Icon icon="light_mode" size="28px" />
+    <Icon icon_name="sun" size="28px" />
   </span>
   <input type="checkbox" bind:checked />
   <span class="slider round" />
@@ -19,7 +18,6 @@
   label {
     border-radius: 100vw;
   }
-
   label:focus-within {
     outline: 2px solid var(--primary);
     outline-offset: 6px;
@@ -42,6 +40,8 @@
     z-index: 99999;
     top: var(--_offset);
     cursor: pointer;
+    display: grid;
+    place-items: center;
   }
   .moon {
     left: var(--_offset);
