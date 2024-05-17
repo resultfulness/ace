@@ -7,7 +7,7 @@
 - [ ] hover effects
 - [ ] mobile, layout change breakpoints
 - [x] loading feedback
-- [ ] error pages
+- [x] error pages
 - [ ] modals for some info
 - [ ] search loads data for search result pages
 - [ ] search pagination
