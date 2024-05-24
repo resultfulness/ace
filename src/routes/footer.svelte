@@ -6,7 +6,7 @@
     <h2>ace of spades &spades;</h2>
     <nav>
         <a href="/">home</a>
-        <a href="#about">about</a>
+        <a href="/#about">about</a>
         <a href="https://github.com/resultfulness/ace">
             <Icon icon_name="mark-github" size="20px"/>
             source
