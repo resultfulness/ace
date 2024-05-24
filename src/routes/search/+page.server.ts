@@ -6,13 +6,13 @@ import tmdb, { tmdb_err } from "$lib/server/tmdb";
 import { get_entry_year } from "$lib/entry";
 
 export const load: PageServerLoad = async function({ url }) {
-	if (url.searchParams.values.length === 0)
-		error(400, `Missing 'q' parameter`);
+	if (url.searchParams.size === 0)
+		error(400, `Missing 'query' parameter`);
 
 	const q = url.searchParams.get('query');
 
 	if (q?.length === 0 || q?.replaceAll(" ", "").length === 0)
-		error(400, `'q' parameter empty`);
+		error(400, `'query' parameter empty`);
 
 	const res = await sql`
 SELECT ace_id, title, tconst, ace_rating, ace_user_rating
