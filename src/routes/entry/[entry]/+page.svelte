@@ -174,7 +174,7 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
 
     .overview {
         background-color: var(--bg);
-        max-width: fit-content;
+        width: 100%;
         margin-inline: auto;
         padding: 2rem;
         border-radius: 2rem;

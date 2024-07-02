@@ -1,4 +1,5 @@
 <script>
+    import { CARDS } from "$lib/ace_cards";
     import Icon from "$lib/components/icon.svelte";
     import Search from "$lib/components/search.svelte";
 </script>
@@ -21,29 +22,63 @@
 
     <h3 id="about">about</h3>
     <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-        distinctio quas optio nemo tempore eum explicabo veritatis omnis velit
-        quo odit, eius, eos corporis magni quod repellendus quae reprehenderit
-        ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias et
-        architecto deserunt distinctio repellat suscipit explicabo numquam, quia
-        excepturi ut aut cum eos, voluptatem praesentium. Vero doloribus fugit
-        voluptate reprehenderit?
+        This website was created with the aim of allowing its users to ensure
+        the movies and series they want to watch are on an acceptable to each
+        user level of explicit content like nudity or sex. We have aggregated
+        ratings from various sources and are designing an algorithm for rating
+        media on those metrics. Currently, the ratings are available only up
+        until the time we collected our initial data, and only for content
+        popular enough. In the future, we plan to support a wider amount of
+        movies and tv series.
     </p>
 
     <h3 id="card_meanings">card meanings</h3>
     <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas error
-        rerum nesciunt laudantium ex voluptatibus voluptate omnis iste!
-        Perspiciatis, animi voluptatum? Rem repellat velit minus harum nihil
-        enim magnam sed, possimus error maxime quis, quasi quas voluptatem ab
-        ratione dicta illum perferendis accusantium saepe. Accusantium excepturi
-        harum dolore iure expedita possimus fuga quod, incidunt distinctio
-        ratione, libero aperiam velit officia unde quibusdam eaque asperiores
-        totam natus vel ullam eligendi adipisci? Soluta, maxime laboriosam
-        cupiditate optio accusantium aut error, ducimus illo sequi quia officia
-        excepturi nostrum repellat cumque enim deserunt ex eveniet cum. Fugiat
-        quas maiores non, consequatur placeat excepturi iste.
+        Ace of spades uses cards to rate movies and tv series based on how much
+        explicit content they contain. The cards used, from least to most
+        explicit are as following:
     </p>
+    <ul>
+        <li>
+            <img src={CARDS.ace} alt="playing card, ace" >
+            <p>
+                <b>Ace</b> - the entry has pretty much no mention or scenes depicting
+                sex/nudity
+            </p>
+        </li>
+        <li>
+            <img src={CARDS.king} alt="playing card, king" >
+            <p>
+                <b>King</b> - the entry has minimal amounts of explicit content
+            </p>
+        </li>
+        <li>
+            <img src={CARDS.queen} alt="playing card, queen" >
+            <p>
+                <b>Queen</b> - some explicit content appears in the entry
+            </p>
+        </li>
+        <li>
+            <img src={CARDS.jack} alt="playing card, jack" >
+            <p>
+                <b>Jack</b> - the entry has several sexual scenes throughout its
+                runtime
+            </p>
+        </li>
+        <li>
+            <img src={CARDS._10} alt="playing card, 10" >
+            <p>
+                <b>Ten</b> - severe sexual or nudity containing scenes appear in the
+                entry
+            </p>
+        </li>
+        <li>
+            <img src={CARDS._9} alt="playing card, 9">
+            <p>
+                <b>Nine</b> - the entry is largely based around sex or nudity
+            </p>
+        </li>
+    </ul>
 </main>
 
 <style>
@@ -94,5 +129,24 @@
 
     p {
         font-size: 1.5rem;
+    }
+
+    li {
+        display: grid;
+        grid-template-columns: 144px 4fr;
+        gap: 1rem;
+        margin-block: 4rem;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1050px) {
+        li {
+            grid-template-columns: 1fr;
+            justify-items:center;
+        }
+    }
+
+    img {
+        max-width: 144px;
     }
 </style>

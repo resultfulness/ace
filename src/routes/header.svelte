@@ -15,6 +15,7 @@
         <Icon icon_name="search" size="24px" />
     </button>
     <div>
+        <a href="/account" title="account" class="account">account</a>
     </div>
 </header>
 
@@ -35,6 +36,20 @@ button {
     margin: 0;
     border: 0;
     border-radius: 50%;
+    cursor: pointer;
+    transition: transform ease 200ms;
+    text-decoration: none;
+    place-items: center;
+    color: hsl(260, 43%, 99%);
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.account {
+    padding: 1rem;
+    margin: 0;
+    border: 0;
+    border-radius: 100vw;
     cursor: pointer;
     transition: transform ease 200ms;
     text-decoration: none;

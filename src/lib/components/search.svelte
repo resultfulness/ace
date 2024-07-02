@@ -1,7 +1,12 @@
 <script lang="ts">
+    import { page } from "$app/stores";
     import Icon from "./icon.svelte";
 
     let value: string = "";
+
+    if ($page.url.searchParams.get("query")) {
+        value = $page.url.searchParams.get("query")!;
+    }
 
 </script>
 
