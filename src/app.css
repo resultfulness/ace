@@ -1,16 +1,4 @@
 :root {
-    color-scheme: light;
-
-    --primary: hsl(266, 52%, 38%);
-    /* --primary: #9448bc; */
-    /* --secondary: #480355; */
-    --fg: hsl(261, 43%, 9%);
-    --bg: hsl(249, 14%, 90%);
-    --bg-drop: hsla(249, 14%, 90%, 0.6);
-    --neutral: hsl(249, 9%, 85%);
-}
-
-:root[data-theme="dark"] {
     color-scheme: dark;
 
     --primary: hsl(266, 52%, 38%);

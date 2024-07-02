@@ -18,7 +18,7 @@
 </div>
 
 <style>
-    #app {
-        position: relative;
-    }
+#app {
+    position: relative;
+}
 </style>

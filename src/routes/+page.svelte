@@ -61,6 +61,12 @@
         font-size: 2rem;
     }
 
+    @media screen and (max-width: 1050px) {
+        .search-container {
+            font-size: 1rem;
+        }
+    }
+
     h2 {
         font-size: 5rem;
     }
