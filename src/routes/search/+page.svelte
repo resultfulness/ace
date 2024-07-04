@@ -1,5 +1,6 @@
 <script lang="ts">
     import { get_alt_for_level, get_card_for_level } from "$lib/ace_cards";
+    import Icon from "$lib/components/icon.svelte";
     import { get_image_full_src } from "$lib/tmdb_image";
     import type { PageData } from "./$types";
 
@@ -11,14 +12,14 @@
 </svelte:head>
 
 <main>
-    <h2>Query results for '{data.q}'</h2>
+    <h2 id="query-title">Query results for '{data.q}'</h2>
     {#if data.entries.length === 0}
         No results returned.
     {:else}
         <ul>
             {#each data.entries as entry}
                 <li>
-                    <a href={`/entry/ace${entry.ace_id}`}>
+                    <a href={`/entry/ace${entry.ace_id}`} class='entry-card'>
                         <img
                             src={get_image_full_src(
                                 entry.poster_path,
@@ -48,10 +49,52 @@
                 </li>
             {/each}
         </ul>
+        <div class="next-prev-navigation">
+            <a
+                href={`/search?query=${data.q}&page=${data.page_n - 1}#query-title`}
+                class:disabled={data.page_n <= 1}
+                class="next-navigation">
+                <Icon icon_name="arrow-left" size="32px" />
+            </a>
+            <a
+                href={`/search?query=${data.q}&page=${data.page_n + 1}#query-title`}
+                class:disabled={data.no_more_entries_left}
+                class="prev-navigation">
+                <Icon icon_name="arrow-right" size="32px"/>
+            </a>
+        </div>
     {/if}
 </main>
 
 <style>
+    .next-prev-navigation {
+        margin-top: 2rem;
+        gap: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .next-navigation, .prev-navigation {
+        padding: 1rem;
+        margin: 0;
+        border: 0;
+        border-radius: 100vw;
+        cursor: pointer;
+        transition: transform ease 200ms;
+        text-decoration: none;
+        color: hsl(260, 43%, 99%);
+        background-color: var(--primary);
+        border: 2px solid var(--primary);
+        max-width: fit-content;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: var(--neutral);
+        border: 2px solid var(--neutral);
+    }
+
     main {
         width: min(1440px, 100% - 2rem);
         margin-inline: auto;
@@ -62,7 +105,6 @@
         padding: 0;
         margin: 0;
     }
-
 
     li {
         position: relative;
@@ -82,11 +124,11 @@
         outline-offset: 6px;
     }
 
-    a:focus {
+    .entry-card:focus {
         outline: 0;
     }
 
-    a {
+    .entry-card {
         display: grid;
         grid-template-columns: 1fr 9fr 2fr;
         justify-items: space-between;
@@ -103,10 +145,10 @@
         padding-right: 1rem;
     }
 
-    .cards > .card, .poster {
+    .cards > .card,
+    .poster {
         border-radius: 1rem;
     }
-
 
     h3 {
         font-size: 3rem;
