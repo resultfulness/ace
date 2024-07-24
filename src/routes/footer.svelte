@@ -35,6 +35,17 @@
         gap: 4rem;
         padding-inline: 4rem;
     }
+    @media screen and (max-width: 1050px) {
+        nav {
+            grid-template-columns: 1fr;
+            gap: .5rem;
+            padding-inline: 0;
+        }
+
+        footer {
+            padding: 1rem 2rem;
+        }
+    }
     nav > a {
         text-align: center;
         background-color: var(--neutral);

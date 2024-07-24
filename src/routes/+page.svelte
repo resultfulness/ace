@@ -16,7 +16,7 @@
     <a href="#about">
         <h2>
             what is this site?
-            <Icon icon_name="chevron-down" size="7rem" />
+            <span><Icon icon_name="chevron-down" size="7rem" /></span>
         </h2>
     </a>
 
@@ -96,11 +96,6 @@
         font-size: 2rem;
     }
 
-    @media screen and (max-width: 1050px) {
-        .search-container {
-            font-size: 1rem;
-        }
-    }
 
     h2 {
         font-size: 5rem;
@@ -128,6 +123,7 @@
     }
 
     p {
+        text-align: justify;
         font-size: 1.5rem;
     }
 
@@ -140,9 +136,41 @@
     }
 
     @media screen and (max-width: 1050px) {
+        main {
+            grid-template-rows: initial;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
         li {
             grid-template-columns: 1fr;
             justify-items:center;
+        }
+        .search-container {
+            width: 100%;
+            z-index: 999;
+            font-size: 1rem;
+            position: fixed;
+            background-color: var(--neutral);
+            bottom: 0;
+            left: 0;
+            padding-block: 1rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+        h2 span {
+            display: none;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
         }
     }
 

@@ -7,7 +7,6 @@
     if ($page.url.searchParams.get("query")) {
         value = $page.url.searchParams.get("query")!;
     }
-
 </script>
 
 <form method="get" action="/search">
@@ -21,6 +20,9 @@
             name="query"
         />
         <button>search</button>
+        <button class="mobile">
+            <Icon icon_name="search" size="1.5em" />
+        </button>
     </label>
 </form>
 
@@ -78,5 +80,19 @@
     button:focus {
         outline: 2px solid var(--primary);
         outline-offset: 6px;
+    }
+
+    button.mobile {
+        display: none;
+    }
+
+    @media screen and (max-width: 1050px) {
+        button {
+            display: none;
+        }
+
+        button.mobile {
+            display: initial;
+        }
     }
 </style>

@@ -4,16 +4,23 @@
     import { get_image_full_src } from "$lib/tmdb_image";
     import type { PageData } from "./$types";
     import tmdb_logo from "$lib/images/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
+    import Modal from "$lib/components/modal.svelte";
 
     export let data: PageData;
     const { entry, details } = data;
     const year = get_entry_year(details);
+
+    let show_description: boolean = false;
 </script>
 
 <svelte:head>
     <title>{entry.title} ({year}) -- Ace of Spades</title>
 </svelte:head>
 
+<Modal bind:show={show_description}>
+    <span slot="header">full description</span>
+    {details.overview}
+</Modal>
 <div class="page-container">
     <main>
         <img
@@ -54,7 +61,10 @@
             </div>
         </div>
 
-        <div class="overview"><p>{details.overview}</p></div>
+        <div class="overview">
+            <p>{details.overview}</p>
+            <button on:click={() => show_description = true}>show full overview</button>
+        </div>
 
         <div class="ratings">
             <a
@@ -173,6 +183,8 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
     }
 
     .overview {
+        display: grid;
+        justify-items: center;
         background-color: var(--bg);
         width: 100%;
         margin-inline: auto;
@@ -186,9 +198,19 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
         margin: 0;
         display: -webkit-box;
         overflow: hidden;
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
         -webkit-box-orient: vertical;
+    }
+
+    .overview button {
+        border: 0;
+        border-radius: .25rem;
+        cursor: pointer;
+        background: var(--primary);
+    }
+    .overview button:hover {
+        filter: brightness(1.2);
     }
 
     .ratings {
@@ -267,5 +289,46 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
         padding: 2px 4px;
         border-radius: 4px;
         font-weight: bold;
+    }
+
+    @media screen and (max-width: 1050px) {
+        .poster {
+            display: none;
+        }
+
+        main {
+            padding-inline: 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+        }
+
+        .title-container {
+            grid-column: span 1;
+        }
+
+        h2 {
+            display: initial;
+            font-size: 3rem;
+        }
+
+        .cards {
+            padding: 0;
+        }
+        .overview {
+            grid-column: span 1;
+        }
+
+        .overview button {
+            height: fit-content;
+            margin-top: 2rem;
+        }
+
+        .ratings {
+            grid-template-columns: 1fr;
+            grid-column: span 1;
+        }
+        .ratings::before {
+            display: none;
+        }
     }
 </style>
