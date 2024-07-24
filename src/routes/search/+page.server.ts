@@ -29,6 +29,7 @@ export const load: PageServerLoad = async function({ url }) {
 SELECT ace_id, title, tconst, ace_rating, ace_user_rating
 FROM movies
 WHERE title ILIKE '%' || ${q!.replace(' ', '%')} || '%'
+ORDER BY rating_count DESC
 LIMIT ${ENTRIES_PER_PAGE}
 OFFSET ${ENTRIES_PER_PAGE * (page_n-1)};
     `;
