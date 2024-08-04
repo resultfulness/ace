@@ -22,7 +22,7 @@
         border-radius: 2rem;
         padding: 2rem;
 
-        margin: 4rem auto;
+        margin: 2rem auto;
         width: min(1440px, 100% - 2rem);
     }
     h2, p {

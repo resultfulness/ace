@@ -14,9 +14,13 @@
     <div style:visibility={$page.url.pathname === "/" ? "hidden" : "visible"}>
         <Search />
     </div>
+    {#if $page.url.pathname !== "/"}
     <div>
-        <!-- <a href="/account" title="account" class="account">account</a> -->
+        <a href="/" title="search" class="account">
+            <Icon icon_name="search" size="1.5em" />
+        </a>
     </div>
+    {/if}
 
 </header>
 
@@ -43,6 +47,7 @@ header {
     color: hsl(260, 43%, 99%);
     background-color: var(--primary);
     border: 2px solid var(--primary);
+    display: none;
 }
 
 
@@ -54,8 +59,11 @@ header {
         gap: 1rem;
         font-size: .75rem;
     }
-    header div {
+    header div:first-of-type {
         display: none;
+    }
+    .account {
+        display: initial;
     }
 }
 

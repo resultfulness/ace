@@ -76,6 +76,10 @@
         background-color: var(--primary);
         border: 2px solid var(--primary);
     }
+    button.mobile {
+        padding: .75em;
+        border-radius: 50%;
+    }
 
     button:focus {
         outline: 2px solid var(--primary);
@@ -87,6 +91,9 @@
     }
 
     @media screen and (max-width: 1050px) {
+        label {
+            grid-template-columns: auto 1fr 54.8px;
+        }
         button {
             display: none;
         }

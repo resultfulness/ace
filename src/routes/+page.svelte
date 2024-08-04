@@ -176,5 +176,6 @@
 
     img {
         max-width: 144px;
+        border-radius: 1rem;
     }
 </style>
