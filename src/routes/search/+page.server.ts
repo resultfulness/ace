@@ -1,6 +1,6 @@
 import { sql } from "$lib/server/database";
 import { error } from "@sveltejs/kit";
-import type { PageServerLoad } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 import type { Movie, TV } from "$lib/types";
 import tmdb, { tmdb_err } from "$lib/server/tmdb";
 import { get_entry_year } from "$lib/entry";

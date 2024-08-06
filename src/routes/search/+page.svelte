@@ -19,7 +19,7 @@
         <ul>
             {#each data.entries as entry}
                 <li>
-                    <a href={`/entry/ace${entry.ace_id}`} class='entry-card'>
+                    <a href={`/entry/ace${entry.ace_id}`} class="entry-card">
                         <img
                             src={get_image_full_src(
                                 entry.poster_path,
@@ -53,14 +53,16 @@
             <a
                 href={`/search?query=${data.q}&page=${data.page_n - 1}#query-title`}
                 class:disabled={data.page_n <= 1}
-                class="next-navigation">
+                class="next-navigation"
+            >
                 <Icon icon_name="arrow-left" size="32px" />
             </a>
             <a
                 href={`/search?query=${data.q}&page=${data.page_n + 1}#query-title`}
                 class:disabled={data.no_more_entries_left}
-                class="prev-navigation">
-                <Icon icon_name="arrow-right" size="32px"/>
+                class="prev-navigation"
+            >
+                <Icon icon_name="arrow-right" size="32px" />
             </a>
         </div>
     {/if}
@@ -74,7 +76,8 @@
         justify-content: center;
     }
 
-    .next-navigation, .prev-navigation {
+    .next-navigation,
+    .prev-navigation {
         padding: 1rem;
         margin: 0;
         border: 0;
@@ -167,14 +170,14 @@
         li {
             padding: 0;
         }
-        
+
         .poster,
         .cards > .card {
-            border-radius: .5rem;
+            border-radius: 0.5rem;
         }
-        
+
         .entry-card {
-            padding: .5rem;
+            padding: 0.5rem;
             grid-template-columns: 7fr 8fr;
             grid-template-rows: 1fr 1fr;
             gap: 0.5rem;

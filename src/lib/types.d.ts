@@ -55,3 +55,10 @@ export interface Genre {
     id: number;
     name: string;
 }
+
+export interface Comment {
+    id: number;
+    username: string;
+    content: string;
+    movie_id: number;
+}

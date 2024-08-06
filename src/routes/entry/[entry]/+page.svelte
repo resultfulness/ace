@@ -7,10 +7,11 @@
     import Modal from "$lib/components/modal.svelte";
 
     export let data: PageData;
-    const { entry, details } = data;
+    const { entry, details, comments } = data;
     const year = get_entry_year(details);
 
     let show_description: boolean = false;
+    let show_add_comment: boolean = false;
 </script>
 
 <svelte:head>
@@ -20,6 +21,21 @@
 <Modal bind:show={show_description}>
     <span slot="header">full overview</span>
     {details.overview}
+</Modal>
+
+<Modal bind:show={show_add_comment}>
+    <span slot="header">add comment</span>
+    <form action="?/comment" method="post">
+        <label>
+            username
+            <input required minlength=3 maxlength=24 type="text" name="username"/>
+        </label>
+        <label>
+            content
+            <textarea required minlength=1 maxlength=128 rows=6 name="content"/>
+        </label>
+        <button type="submit">add</button>
+    </form>
 </Modal>
 
 <main>
@@ -60,7 +76,7 @@
                         get_alt_for_level(entry.ace_user_rating)}
                     class="card"
                 />
-                <figcaption>user rating</figcaption>
+                <figcaption>user rating <abbr title="not available yet">?</abbr></figcaption>
             </figure>
         </div>
     </section>
@@ -102,6 +118,23 @@ https://www.themoviedb.org/${details.media_type}/${details.id}
             {details.vote_count} votes
         </span>
     </a>
+</section>
+<hr />
+<section class="comments">
+        <div style="display:grid;grid-template-columns: auto auto;">
+            <h3>user comments</h3>
+            <button class="open-add-comment" on:click={() => show_add_comment=true}>add a comment</button>
+        </div>
+    {#if comments.length === 0}
+            <span style="filter:brightness(0.6);">no comments yet!</span>
+    {/if}
+    {#each comments as comment}
+            <p>
+                <strong>{comment.username}</strong>
+                <br />
+                {comment.content}
+            </p>
+    {/each}
 </section>
 </main>
 
@@ -245,6 +278,21 @@ hr {
     font-weight: bold;
 }
 
+.comments {
+    padding: 1rem;
+}
+.comments h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.comments p {
+    padding: .5rem;
+    margin-block: .5rem;
+    border-radius: 1rem;
+    border: 1px solid grey;
+    text-align: justify;
+}
+
 @media screen and (min-width: 1050px) {
     .entry-info {
         grid-template-rows: auto auto 1fr;
@@ -281,5 +329,45 @@ hr {
         max-width: fit-content;
         gap: 2rem;
     }
+}
+
+form label {
+    display: grid;
+}
+form {
+    display: grid;
+    gap: 1rem;
+}
+form button {
+    justify-self: right;
+    border: 0;
+    border-radius: 100vw;
+    padding-inline: 1rem;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+form button:hover {
+    filter: brightness(1.4) saturate(0.6);
+}
+form textarea {
+    resize: none;
+}
+.open-add-comment {
+    border: 0;
+    border-radius: 100vw;
+    padding-inline: 1rem;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+form input,
+form textarea {
+    background-color: var(--neutral);
+    border: 0;
+    padding: .25em 1em;
+    border-radius: .75rem;
+}
+form input:focus,
+form textarea:focus {
+    outline: 1px solid var(--primary);
 }
 </style>

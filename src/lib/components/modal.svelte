@@ -35,9 +35,12 @@
     
     button {
         border: 0;
+        border-radius: 50%;
         background: 0;
-        padding: 0;
-        padding-inline: 1rem;
+        aspect-ratio: 1/1;
+        padding: .875rem;
+        display: grid;
+        place-items: center;
     }
 
     button:hover {
@@ -48,7 +51,7 @@
     div {
         display: grid;
         grid-template-columns: 1fr auto;
-        align-content: center;
+        align-items: center;
     }
 
     h2 {
@@ -58,5 +61,6 @@
     p {
         max-width: 80ch;
         text-align: justify;
+        margin-bottom: 0;
     }
 </style>

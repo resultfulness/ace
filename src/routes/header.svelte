@@ -39,14 +39,13 @@ header {
     padding: 1rem;
     margin: 0;
     border: 0;
-    border-radius: 100vw;
+    border-radius: 50%;
     cursor: pointer;
     transition: transform ease 200ms;
     text-decoration: none;
     place-items: center;
     color: hsl(260, 43%, 99%);
     background-color: var(--primary);
-    border: 2px solid var(--primary);
     display: none;
 }
 
@@ -59,11 +58,13 @@ header {
         gap: 1rem;
         font-size: .75rem;
     }
+
     header div:first-of-type {
         display: none;
     }
+
     .account {
-        display: initial;
+        display: grid;
     }
 }
 
